@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Documentation;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentationController extends Controller
 {
@@ -13,7 +15,10 @@ class DocumentationController extends Controller
      */
     public function index()
     {
-        return view('admin.documentation.index');
+        $docs = Documentation::latest()->get();
+        return view('admin.documentation.index')->with('docs', $docs);
+        
+        
     }
 
     /**
@@ -35,20 +40,31 @@ class DocumentationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // Add your other validation rules here
-            'image' => 'required|mimes:jpg,jpeg,png,pdf|max:2048', // Define allowed file types and maximum size
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image file
+            'caption' => 'required',
         ]);
+        
+        if ($request->hasFile('img')) {
+            $imageFile = $request->file('img');
+            $originalName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            // originalName-time.extension
+            $filename = $originalName . "-" . time() . '.' . $imageFile->getClientOriginalExtension();
+            
+            $path = $imageFile->storeAs('public/assets/images', $filename); // Update the storage path
+            if (Auth::check()) {
+                $userId = Auth::id();
+            }
     
-        // Handle file upload
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/images', $filename); // Store the file in the 'uploads' directory
+            Documentation::create([
+                'image' => $filename,
+                'caption' => $request->caption,
+                'author_id' => $userId
+            ]);
+    
+            return view('admin.documentation.index')->with('uploadSuccess', 'The image ' . $filename . ' successfully uploaded!');
         }
-        dd($filename);
-        // Add your other logic here
-        return view('admin.documentation.index')->with('success', 'File uploaded successfully.');
     }
+    
 
     /**
      * Display the specified resource.

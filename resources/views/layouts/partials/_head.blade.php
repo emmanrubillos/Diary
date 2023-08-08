@@ -34,3 +34,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script src="{{ asset('js/dropify.js') }}"></script>
+
+{{-- Lightbox css --}}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.css">
+{{-- Light box Javascript --}}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js">
