@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "dropify": "^0.2.2",
+        "lightbox2": "^2.11.4",
         "sweetalert2": "^11.7.20"
     }
 }

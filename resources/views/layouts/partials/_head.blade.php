@@ -7,6 +7,9 @@
 
 <title>Diary</title>
 
+{{-- Favicon --}}
+<link rel="icon" type="image/x-icon" href="{{ asset('assets/images/maru2.png') }}">
+
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -19,9 +22,7 @@
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Include Font Awesome CSS -->
 <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 <!-- Custom styles for this template-->
@@ -35,9 +36,12 @@
 
 <script src="{{ asset('js/dropify.js') }}"></script>
 
-{{-- Lightbox css --}}
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.css">
-{{-- Light box Javascript --}}
+<!-- Lightbox CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.css">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js">
+<!-- Lightbox JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+{{-- TinyMCE --}}
+<script src="https://cdn.tiny.cloud/1/f91h8ob9cbvkiqq7t8c04i5g7mpzus8bufl7tdxkfq8cydqj/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

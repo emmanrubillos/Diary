@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header bg-info">
+        <div class="card-header bg-white">
             <div class="row">
                 <div class="col-md-6 col-12">
                     <i class="fas fa-solid fa-user-secret"></i>

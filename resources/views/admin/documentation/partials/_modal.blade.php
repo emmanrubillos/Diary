@@ -13,8 +13,7 @@
           <div class="modal-body">
             <input type="file" name="img" id="img" data-max-file-size="2M" data-show-errors="true" data-max-file-size-preview="2M">
             <input type="text" name="caption" id="caption" class="form-control mt-2" placeholder="Write caption here">
-          <div class="modal-footer">  
-            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <div class="modal-footer"> 
             <input type="submit" value="Save" id="submit_doc" class="btn btn-primary btn-sm">
           </div>
         </form>

@@ -29,17 +29,22 @@
             <i class="fas fa-solid fa-images"></i>
             <span>Documentations</span></a>
     </li>
+
+    @if(Session::get('USERROLE') == 1 || Session::get('USERROLE') == 2)
     <!-- Nav Item - ApprovalRequest  -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('approvalrequest.index')}}">
             <i class="fas fa-solid fa-check-double"></i>
             <span>Approval Request</span></a>
     </li>
+    @endif
+
+    @if(Session::get('USERROLE') == 1)
     <!-- Nav Item - Users  -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('user.index')}}">
             <i class="fas fa-solid fa-user-secret"></i>
             <span>Users</span></a>
     </li>
-
+    @endif
 </ul>

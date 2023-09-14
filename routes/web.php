@@ -23,12 +23,25 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+Route::get('/not-authorized', function(){
+    return view('auth.not-authorized');
+})->name('not-authorized');
 
-Route::resource('/diary',DiariesController::class);
+Route::middleware('checkRouteAccess')->group(function (){
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
 
-Route::resource('/documentation',DocumentationController::class);
+    Route::resource('/diary',DiariesController::class);
+    
+    Route::resource('/documentation',DocumentationController::class);
+    
+    Route::resource('/approvalrequest',ApprovalRequestController::class);
+    
+    Route::resource('/user',UserController::class);
 
-Route::resource('/approvalrequest',ApprovalRequestController::class);
+    Route::get('/print/approval-requests/{id}',[App\Http\Controllers\ApprovalRequestController::class, 'print'])->name('approval-requests.print');
 
-Route::resource('/user',UserController::class);
+    Route::put('/approve/approval-requests/{id}',[App\Http\Controllers\ApprovalRequestController::class, 'approve'])->name('approval-requests.approve');
+
+    Route::put('/reject/approval-requests/{id}',[App\Http\Controllers\ApprovalRequestController::class, 'reject'])->name('approval-requests.reject');
+    
+});

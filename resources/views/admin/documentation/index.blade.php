@@ -30,6 +30,7 @@
         </div>
     </form>
 </div>
-@include('admin.documentation.partials._script')
 @include('admin.documentation.partials._modal')
+@include('admin.documentation.partials._script')
+
 @endsection
